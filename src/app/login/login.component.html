@@ -1,0 +1,36 @@
+<div id="login">
+  <h1>Welcome Back!</h1>
+
+  <form [formGroup]="loginFormModel" (submit)="onSubmit()">
+
+    <div class="field-wrap">
+      <label>
+        Email Address<span class="req">*</span>
+      </label>
+      <input [ngClass]="{'error-field' : checkValidation(loginFormModel.controls.login)}"
+        type="email" formControlName="login" required autocomplete="off"/>
+      <div class="errors" *ngIf="checkValidation(loginFormModel.controls.login)">
+        <div *ngIf="loginFormModel.controls.login.errors.required">required</div>
+        <div *ngIf="loginFormModel.controls.login.errors.email">email</div>
+      </div>
+    </div>
+
+    <div class="field-wrap">
+      <label>
+        Password<span class="req">*</span>
+      </label>
+      <input [ngClass]="{'error-field' : checkValidation(loginFormModel.controls.password)}"
+        type="password" formControlName="password" required autocomplete="off"/>
+      <div class="errors" *ngIf="checkValidation(loginFormModel.controls.password)">
+        <div *ngIf="loginFormModel.controls.password.errors.required">required</div>
+        <div *ngIf="loginFormModel.controls.password.errors.passwordValidation">passwordValidation</div>
+      </div>
+    </div>
+
+    <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+    <button class="button button-block">Log In</button>
+
+  </form>
+
+</div>
